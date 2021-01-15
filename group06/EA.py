@@ -6,9 +6,10 @@ from group06.operadores.Uniform import Uniform as Selection
 from group06.operadores.Elitist import Elitist as Replacement
 import numpy as np
 
+
 class EA(object):
     def __init__(self, f_fitnes, bounds, populationSize):
-        Genome.set_f_fitnes(f_fitnes)   
+        Genome.set_f_fitnes(f_fitnes)
         self.populationSize = populationSize
         self.nVar = len(bounds)
         self.min = bounds[0][0]
@@ -18,7 +19,7 @@ class EA(object):
 
     def run(self, iteraciones):
         # conseguimos la poblacion inicial
-        self.currentGen = Population(self.f_fitnes, self.populationSize)  
+        self.currentGen = Population(self.f_fitnes, self.populationSize)
         self.initPopulation()
         trialGen = Population(self.f_fitnes, self.populationSize)
         selector = Selection()
@@ -55,7 +56,6 @@ class EA(object):
                 pass
             pass
         npArray = np.array(vInBounds)
-        # return Genome(npArray, self.f_fitnes(npArray))
         return Genome(npArray)
         pass
 
@@ -66,7 +66,7 @@ class EA(object):
             self.currentGen.add(Genome(solution))
             pass
         pass
-    
+
     def best(self):
-        return  self.currentGen.getGenome(0)
+        return self.currentGen.getGenome(0)
         pass
